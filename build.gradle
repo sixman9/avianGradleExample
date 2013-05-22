@@ -14,6 +14,26 @@ apply from: 'https://raw.github.com/townsfolk/gradle-templates/master/installati
 
 ext {
     avianPluginVersion = '0.1.0'
+	mainClass="com.fonotext.avian.HelloWorld"
+	platform="windows"
+	arch="i386"
+	
+	/* ----AVIAN OPTION LIST -----
+	mainClass
+	library
+	buildPlatform
+	buildArch
+	platform
+	arch
+	version
+	fullVersion
+	avianVersion
+	proguard
+	avian
+	stage1
+	stage2
+	output
+	*/
 }
 
 // Create a configuration define our dependencies
@@ -37,11 +57,15 @@ buildscript {
 repositories {
 	mavenCentral()
 	//mavenRepo url: "https://repository.jboss.org/nexus/content/groups/public"
+	//mavenRepo url: "https://cgsrv8.arrc.csiro.au/artifactory/repo"
+	mavenRepo url: "http://repo.evolveum.com/repo"
 }
 
 // Define Ant task dependencies to the sshAntTask configuration.
 dependencies {
 	//compile "com.::$Version"
+	compile 'net.sf.proguard:proguard-base:4.6'
+	compile 'net.sf.proguard:proguard:4.6'
 }
 
 //Generate self-distributing Gradle wrapper - BTW, simple task definition
